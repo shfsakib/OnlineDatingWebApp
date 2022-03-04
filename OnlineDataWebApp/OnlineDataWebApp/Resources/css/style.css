@@ -1,8 +1,10 @@
-﻿:root {
+﻿@import url('home.css');
+:root {
     /*--primary-color: #466feb;
     --secondary-color: #06488a;*/
-     --primary-color: deeppink;
+    --primary-color: deeppink;
     --secondary-color: hotpink;
+    --deeper-pink: #bf0067;
     --bg: #F9FAFC;
     --red: #ED1C24;
     --font_c: #B1B3B6;
@@ -208,7 +210,7 @@ header .header-right > ul > li {
     padding-top: 110px;
     height: calc(100% - 110px);
     z-index: 9;
-} 
+}
 /*first block design*/
 
 .first-block {
@@ -1015,7 +1017,7 @@ table > tbody > tr {
 .login-img {
     width: 250px;
     position: relative;
-    top:20%;
+    top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -1443,3 +1445,5 @@ input[type=email] {
 .max-wd-520 {
     max-width: 520px;
 }
+
+

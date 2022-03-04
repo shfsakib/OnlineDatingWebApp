@@ -69,12 +69,14 @@
     <Content Include="packages.config" />
     <Content Include="Resources\bootstrap.bundle.min.js" />
     <Content Include="Resources\bootstrap.min.css" />
+    <Content Include="Resources\css\home.css" />
     <Content Include="Resources\css\style.css" />
     <Content Include="Resources\font-awesome.css" />
     <Content Include="Resources\images\360.svg" />
     <Content Include="Resources\images\4k.svg" />
     <Content Include="Resources\images\add.png" />
     <Content Include="Resources\images\analyze.png" />
+    <Content Include="Resources\images\bg.jpg" />
     <Content Include="Resources\images\bgcircle.png" />
     <Content Include="Resources\images\blockbg.svg" />
     <Content Include="Resources\images\brand.svg" />

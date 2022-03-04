@@ -15,15 +15,30 @@
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
     var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl)
-    });
-    let hash = window.location.pathname; 
+    }); 
+    
+    //
+    const hash = window.location.pathname; 
     $('.menu-nav a').closest('li').removeClass('active');
     $('a[href="' + hash + '"]').closest('li').addClass('active');
-    $('.menu-nav a').on('click', function () {
-        let hash = window.location.hash;
+    $('.menu-nav a').on('click', function() {
+        const hash = window.location.hash;
         $('.menu-nav a').closest('li').removeClass('active');
         $('a[href="' + hash + '"]').closest('li').addClass('active');
-    })
+    });
+    //radio button effect
+
+    $('.radio-gender input').on('click', function () {
+        $('.radio-gender').removeClass('active');
+        $(this).parent().addClass('active'); 
+    });
+    //
+    $('#a').on('change', function () {
+        $('.range1').val($(this).val()); 
+    });
+    $('#b').on('change', function () {
+        $('.range2').val($(this).val());
+    });
 });
 
 //Menu hamburger animation start

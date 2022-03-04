@@ -48,6 +48,11 @@ namespace OnlineDataWebApp.ui
             {
                 ddlCommitment.Text = lblCommitment.Text;
             }
+            lblGender.Text = func.IsExist($"SELECT Gender FROM USERDETAILS WHERE USERID='{func.UserIdCookie()}'");
+            if (lblGender.Text != "Not Added")
+            {
+                ddlGender.Text = lblGender.Text;
+            }
             lblDescription.Text = txtDescription.Text = func.IsExist($"SELECT Description FROM USERDETAILS WHERE USERID='{func.UserIdCookie()}'");
             lblRestaurant.Text = txtRestaurant.Text = func.IsExist($"SELECT Restaurants FROM USERDETAILS WHERE USERID='{func.UserIdCookie()}'");
             lblMovie.Text = txtMovie.Text = func.IsExist($"SELECT Movies FROM USERDETAILS WHERE USERID='{func.UserIdCookie()}'");
@@ -112,6 +117,10 @@ namespace OnlineDataWebApp.ui
             if (txtOccupation.Text == "")
             {
                 func.Alert(this, "Occupation is required", "w", true);
+            }
+            else if (ddlGender.Text == "SELECT")
+            {
+                func.Alert(this, "Gender is required", "w", true);
             }
             else if (txtAge.Text == "")
             {
@@ -322,8 +331,8 @@ namespace OnlineDataWebApp.ui
         }
         private void VisiblePersonal(bool ans1, bool ans2)
         {
-            lnkUpdateInfo.Visible = txtOccupation.Visible = txtAge.Visible = txtHeight.Visible = txtWeight.Visible = txtInterest.Visible = txtLikes.Visible = txtDislikes.Visible = txtGoal.Visible = ddlCommitment.Visible = txtDescription.Visible = ans1;
-            lnkChangeInfo.Visible = lblOccupation.Visible = lblAge.Visible = lblHeight.Visible = lblWeight.Visible = lblInterest.Visible = lblLikes.Visible = lblDislikes.Visible = lblGoal.Visible = lblCommitment.Visible = lblDescription.Visible = ans2;
+            lnkUpdateInfo.Visible =ddlGender.Visible= txtOccupation.Visible = txtAge.Visible = txtHeight.Visible = txtWeight.Visible = txtInterest.Visible = txtLikes.Visible = txtDislikes.Visible = txtGoal.Visible = ddlCommitment.Visible = txtDescription.Visible = ans1;
+            lnkChangeInfo.Visible = lblOccupation.Visible =lblGender.Visible= lblAge.Visible = lblHeight.Visible = lblWeight.Visible = lblInterest.Visible = lblLikes.Visible = lblDislikes.Visible = lblGoal.Visible = lblCommitment.Visible = lblDescription.Visible = ans2;
         }
         private void VisibleFavorite(bool ans1, bool ans2)
         {
@@ -377,9 +386,10 @@ namespace OnlineDataWebApp.ui
                 if (con.State != ConnectionState.Open)
                     con.Open();
                 transaction = con.BeginTransaction();
-                cmd = new SqlCommand("UPDATE UserDetails SET Occupation=@Occupation,Age=@Age,Height=@Height,Weight=@Weight,Interest=@Interest,Likes=@Likes,DisLikes=@DisLikes,Goals=@Goals,Commitment=@Commitment,Description=@Description WHERE UserId=@UserId", con);
+                cmd = new SqlCommand("UPDATE UserDetails SET Occupation=@Occupation,Gender=@Gender,Age=@Age,Height=@Height,Weight=@Weight,Interest=@Interest,Likes=@Likes,DisLikes=@DisLikes,Goals=@Goals,Commitment=@Commitment,Description=@Description WHERE UserId=@UserId", con);
                 cmd.Parameters.AddWithValue("@Occupation", txtOccupation.Text);
                 cmd.Parameters.AddWithValue("@Age", txtAge.Text);
+                cmd.Parameters.AddWithValue("@Gender", ddlGender.Text);
                 cmd.Parameters.AddWithValue("@Height", txtHeight.Text);
                 cmd.Parameters.AddWithValue("@Weight", txtWeight.Text);
                 cmd.Parameters.AddWithValue("@Interest", txtInterest.Text);

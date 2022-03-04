@@ -6,7 +6,7 @@
     <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
-                <div class="container">
+                <div class="container pt-5">
                     <div class="row">
                         <div class="col-lg-3"></div>
                         <div class="col-lg-6 text-center">
@@ -52,6 +52,17 @@
                                             Text="Doctor,Engineer etc."></asp:Label>
                                         <asp:TextBox ID="txtOccupation"  onfocus="this.value = ''" placeholder="e.g. Doctor,Engineer etc." autocomplete="off"
                                             class="form-control" Visible="False" runat="server"></asp:TextBox>
+                                    </div>
+                                    <div class="col-12 mt-2">
+                                        <h5 class="font-bold">Gender</h5>
+                                        <asp:Label ID="lblGender" runat="server" CssClass="font-20"
+                                            Text="Male"></asp:Label>
+                                          <asp:DropDownList ID="ddlGender" CssClass="form-control" Visible="False"
+                                            runat="server">
+                                            <asp:ListItem>SELECT</asp:ListItem>
+                                            <asp:ListItem>Male</asp:ListItem>
+                                            <asp:ListItem>Female</asp:ListItem> 
+                                        </asp:DropDownList>
                                     </div>
                                     <div class="col-12 mt-2">
                                         <h5 class="font-bold">Age</h5>
@@ -237,7 +248,7 @@
                                         <h5 class="font-bold">State</h5>
                                         <asp:Label ID="lblState" runat="server" CssClass="font-20" Text="NY,LV etc.">
                                         </asp:Label>
-                                        <asp:TextBox ID="txtState" placeholder="e.g. NY,LV etc." class="form-control" autocomplete="off" onfocus="this.value = ''"
+                                        <asp:TextBox ID="txtState" placeholder="e.g. NY,LV etc." class="form-control text-uppercase" autocomplete="off" onfocus="this.value = ''"
                                             Visible="False" runat="server"></asp:TextBox>
                                     </div>
                                 </div>

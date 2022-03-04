@@ -137,6 +137,7 @@ namespace OnlineDataWebApp.ui
                 cmd.CommandType=CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@UserId", ViewState["UserId"]);
                 cmd.Parameters.AddWithValue("@Picture", "../Resources/images/user.png");
+                cmd.Parameters.AddWithValue("@Gender", "Not Added");
                 cmd.Parameters.AddWithValue("@Occupation", "Not Added");
                 cmd.Parameters.AddWithValue("@Age", "0");
                 cmd.Parameters.AddWithValue("@Height", "Not Added");
