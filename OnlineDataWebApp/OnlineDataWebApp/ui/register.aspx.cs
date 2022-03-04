@@ -80,6 +80,7 @@ namespace OnlineDataWebApp.ui
                 if (ans)
                 {
                     func.Alert(this, "Registered successfully", "s", true);
+                    InsertInsertUserDetails();
                     txtUserName.Text = txtFullName.Text = txtEmail.Text = txtPassword.Text = "";
                 }
                 else
@@ -91,6 +92,8 @@ namespace OnlineDataWebApp.ui
         }
         internal bool Insert()
         {
+            string userId = func.GenerateId("SELECT MAX(USERID) FROM Users");
+            ViewState["UserId"] = userId;
             bool result = false;
             SqlTransaction transaction = null;
             try
@@ -100,12 +103,60 @@ namespace OnlineDataWebApp.ui
                 transaction = con.BeginTransaction();
                 cmd = new SqlCommand("RegisterUser", con);
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@UserId", userId);
                 cmd.Parameters.AddWithValue("@UserName", txtUserName.Text);
                 cmd.Parameters.AddWithValue("@FullName", txtFullName.Text);
                 cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
                 cmd.Parameters.AddWithValue("@Password", txtPassword.Text);
                 cmd.Parameters.AddWithValue("@RegTime", func.Date());
                 cmd.Parameters.AddWithValue("@UserStatus", 'A');
+
+                cmd.Transaction = transaction;
+                cmd.ExecuteNonQuery();
+                transaction.Commit();
+                result = true;
+                if (con.State != ConnectionState.Closed)
+                    con.Close();
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+            }
+            return result;
+        }
+        internal bool InsertInsertUserDetails()
+        {
+            bool result = false;
+            SqlTransaction transaction = null;
+            try
+            {
+                if (con.State != ConnectionState.Open)
+                    con.Open();
+                transaction = con.BeginTransaction();
+                cmd = new SqlCommand("InsertUserDetails", con);
+                cmd.CommandType=CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@UserId", ViewState["UserId"]);
+                cmd.Parameters.AddWithValue("@Picture", "../Resources/images/user.png");
+                cmd.Parameters.AddWithValue("@Occupation", "Not Added");
+                cmd.Parameters.AddWithValue("@Age", "0");
+                cmd.Parameters.AddWithValue("@Height", "Not Added");
+                cmd.Parameters.AddWithValue("@Weight", "Not Added");
+                cmd.Parameters.AddWithValue("@Interest", "Not Added");
+                cmd.Parameters.AddWithValue("@Likes", "Not Added");
+                cmd.Parameters.AddWithValue("@DisLikes", "Not Added");
+                cmd.Parameters.AddWithValue("@Goals", "Not Added");
+                cmd.Parameters.AddWithValue("@Commitment", "Not Added");
+                cmd.Parameters.AddWithValue("@Description", "Not Added");
+                cmd.Parameters.AddWithValue("@Restaurants", "Not Added");
+                cmd.Parameters.AddWithValue("@Movies", "Not Added");
+                cmd.Parameters.AddWithValue("@Books", "Not Added");
+                cmd.Parameters.AddWithValue("@Peoms", "Not Added");
+                cmd.Parameters.AddWithValue("@Saying", "Not Added");
+                cmd.Parameters.AddWithValue("@Contact", "Not Added");
+                cmd.Parameters.AddWithValue("@Address", "Not Added");
+                cmd.Parameters.AddWithValue("@City", "Not Added");
+                cmd.Parameters.AddWithValue("@State", "Not Added");
+                cmd.Parameters.AddWithValue("@Visibility", "Private");
 
                 cmd.Transaction = transaction;
                 cmd.ExecuteNonQuery();

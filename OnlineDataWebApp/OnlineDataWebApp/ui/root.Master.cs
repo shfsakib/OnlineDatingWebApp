@@ -11,17 +11,17 @@ namespace OnlineDataWebApp.ui
     public partial class root : System.Web.UI.MasterPage
     {
         private function func;
-        private HttpCookie cookie;
+        private HttpCookie cookie= function.GetCookie(); 
 
         public root()
         {
-            func=function.GetInstance();
-            cookie = function.GetCookie();
+            func = function.GetInstance();
         }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                func.CheckCookies();
                 if (cookie == null)
                 {
                     Response.Redirect("/ui/log-in.aspx");
