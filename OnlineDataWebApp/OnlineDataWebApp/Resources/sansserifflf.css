@@ -1,0 +1,85 @@
+﻿@font-face {
+    font-family: 'SansSerifFLF';
+    font-style: normal;
+    font-weight: 550;
+    src: local('SansSerifFLF'), url('https://fonts.cdnfonts.com/s/20764/SansSerifFLF-Demibold.woff') format('woff');
+}
+@font-face {
+    font-family: 'SansSerifFLF';
+    font-style: normal;
+    font-weight: 550;
+    src: local('SansSerifFLF'), url('https://fonts.cdnfonts.com/s/20764/SansSerifFLF.woff') format('woff');
+}
+@font-face {
+    font-family: 'SansSerifFLF';
+    font-style: italic;
+    font-weight: 550;
+    src: local('SansSerifFLF'), url('https://fonts.cdnfonts.com/s/20764/SansSerifFLF-DemiItalic.woff') format('woff');
+}
+@font-face {
+    font-family: 'SansSerifFLF';
+    font-style: italic;
+    font-weight: 550;
+    src: local('SansSerifFLF'), url('https://fonts.cdnfonts.com/s/20764/SansSerifFLF-Italic.woff') format('woff');
+}
+@font-face {
+    font-family: 'SansSerifBldFLF';
+    font-style: normal;
+    font-weight: 550;
+    src: local('SansSerifBldFLF'), url('https://fonts.cdnfonts.com/s/20764/SansSerifBldFLF.woff') format('woff');
+}
+@font-face {
+    font-family: 'SansSerifBldFLFCond';
+    font-style: normal;
+    font-weight: 550;
+    src: local('SansSerifBldFLFCond'), url('https://fonts.cdnfonts.com/s/20764/SansSerifBldFLFCond.woff') format('woff');
+}
+@font-face {
+    font-family: 'SansSerifBookFLF';
+    font-style: normal;
+    font-weight: 550;
+    src: local('SansSerifBookFLF'), url('https://fonts.cdnfonts.com/s/20764/SansSerifBookFLF.woff') format('woff');
+}
+@font-face {
+    font-family: 'SansSerifExbFLF';
+    font-style: normal;
+    font-weight: 550;
+    src: local('SansSerifExbFLF'), url('https://fonts.cdnfonts.com/s/20764/SansSerifExbFLF.woff') format('woff');
+}
+@font-face {
+    font-family: 'SansSerifExbFLFCond';
+    font-style: normal;
+    font-weight: 550;
+    src: local('SansSerifExbFLFCond'), url('https://fonts.cdnfonts.com/s/20764/SansSerifExbFLFCond.woff') format('woff');
+}
+@font-face {
+    font-family: 'SansSerifBldFLF-Italic';
+    font-style: italic;
+    font-weight: 550;
+    src: local('SansSerifBldFLF-Italic'), url('https://fonts.cdnfonts.com/s/20764/SansSerifBldFLF-Italic.woff') format('woff');
+}
+@font-face {
+    font-family: 'SansSerifBldFLFCond';
+    font-style: italic;
+    font-weight: 550;
+    src: local('SansSerifBldFLFCond'), url('https://fonts.cdnfonts.com/s/20764/SansSerifBldFLFCond-Italic.woff') format('woff');
+}
+@font-face {
+    font-family: 'SansSerifBookFLF';
+    font-style: italic;
+    font-weight: 550;
+    src: local('SansSerifBookFLF'), url('https://fonts.cdnfonts.com/s/20764/SansSerifBookFLF-Italic.woff') format('woff');
+}
+@font-face {
+    font-family: 'SansSerifExbFLF';
+    font-style: italic;
+    font-weight: 550;
+    src: local('SansSerifExbFLF'), url('https://fonts.cdnfonts.com/s/20764/SansSerifExbFLF-Italic.woff') format('woff');
+}
+@font-face {
+    font-family: 'SansSerifExbFLFCond';
+    font-style: italic;
+    font-weight: 550;
+    src: local('SansSerifExbFLFCond'), url('https://fonts.cdnfonts.com/s/20764/SansSerifExbFLFCond-Italic.woff') format('woff');
+}
+
