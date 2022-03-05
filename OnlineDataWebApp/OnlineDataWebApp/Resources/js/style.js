@@ -1,45 +1,84 @@
-﻿$(document).ready(function() {
+﻿$(document).ready(function () {
     var list = ".left-bottom ul li a";
-    $(list).click(function() {
+    $(list).click(function () {
         $(list).removeClass('pag-active');
         $(this).addClass('pag-active');
     });
     var i = "td .fa-chevron-down";
-    $(i).click(function() {
+    $(i).click(function () {
         $(this).toggleClass('rotate');
     })
     var faq = ".faq-question-div i";
-    $(faq).click(function() {
+    $(faq).click(function () {
         $(this).toggleClass('rotate');
     });
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl)
-    }); 
-    
+    });
+
     //
-    const hash = window.location.pathname; 
+    const hash = window.location.pathname;
     $('.menu-nav a').closest('li').removeClass('active');
     $('a[href="' + hash + '"]').closest('li').addClass('active');
-    $('.menu-nav a').on('click', function() {
+    $('.menu-nav a').on('click', function () {
         const hash = window.location.hash;
         $('.menu-nav a').closest('li').removeClass('active');
         $('a[href="' + hash + '"]').closest('li').addClass('active');
     });
     //radio button effect
-
+    if ($('#ContentPlaceHolder1_inputFemale').attr('checked') === 'checked') {
+        $('.radio-gender').removeClass('active');
+        $('#ContentPlaceHolder1_inputFemale').parent().addClass('active');
+        $('.radio-gender input').removeAttr('checked');
+        $('#ContentPlaceHolder1_inputFemale').attr('checked', 'checked');
+    }
+    if ($('#ContentPlaceHolder1_inputMale').prop('checked')) {
+        $('.radio-gender').removeClass('active');
+        $('#ContentPlaceHolder1_inputMale').parent().addClass('active');
+        $('.radio-gender input').removeAttr('checked');
+        $('#ContentPlaceHolder1_inputMale').attr('checked', 'checked');
+    }
     $('.radio-gender input').on('click', function () {
         $('.radio-gender').removeClass('active');
-        $(this).parent().addClass('active'); 
+        $(this).parent().addClass('active');
+        $('.radio-gender input').removeAttr('checked');
+        $(this).attr('checked', 'checked');
     });
+
     //
     $('#a').on('change', function () {
-        $('.range1').val($(this).val()); 
+        $('.range1').val($(this).val());
     });
     $('#b').on('change', function () {
         $('.range2').val($(this).val());
     });
 });
+function pageLoad() {
+    if ($('#ContentPlaceHolder1_inputFemale').attr('checked') === 'checked') {
+        $('.radio-gender').removeClass('active');
+        $('#ContentPlaceHolder1_inputFemale').parent().addClass('active');
+        $('#ContentPlaceHolder1_inputFemale').attr('checked', 'checked');
+    }
+    if ($('#ContentPlaceHolder1_inputMale').attr('checked') === 'checked') {
+        $('.radio-gender').removeClass('active');
+        $('#ContentPlaceHolder1_inputMale').parent().addClass('active');
+        $('.radio-gender input').removeAttr('checked');
+        $('#ContentPlaceHolder1_inputMale').attr('checked', 'checked');
+    }
+    $('.radio-gender input').on('click', function () {
+        $('.radio-gender').removeClass('active');
+        $(this).parent().addClass('active');
+        $(this).attr('checked', 'checked');
+    });
+    //
+    $('#a').on('change', function () {
+        $('.range1').val($(this).val());
+    });
+    $('#b').on('change', function () {
+        $('.range2').val($(this).val());
+    });
+}
 
 //Menu hamburger animation start
 const menuBtn = document.querySelector('.menu-btn');
@@ -66,7 +105,7 @@ function toggleMenu() {
 
 //end
 //typing animation start
-var TxtType = function(el, toRotate, period) {
+var TxtType = function (el, toRotate, period) {
     this.toRotate = toRotate;
     this.el = el;
     this.loopNum = 0;
@@ -76,7 +115,7 @@ var TxtType = function(el, toRotate, period) {
     this.isDeleting = false;
 };
 
-TxtType.prototype.tick = function() {
+TxtType.prototype.tick = function () {
     var i = this.loopNum % this.toRotate.length;
     var fullTxt = this.toRotate[i];
 
@@ -102,12 +141,12 @@ TxtType.prototype.tick = function() {
         delta = 500;
     }
 
-    setTimeout(function() {
+    setTimeout(function () {
         that.tick();
     }, delta);
 };
 
-window.onload = function() {
+window.onload = function () {
     var elements = document.getElementsByClassName('typewrite');
     for (var i = 0; i < elements.length; i++) {
         var toRotate = elements[i].getAttribute('data-type');

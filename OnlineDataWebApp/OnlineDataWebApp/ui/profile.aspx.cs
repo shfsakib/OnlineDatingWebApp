@@ -32,6 +32,7 @@ namespace OnlineDataWebApp.ui
 
         private void LoadData()
         {
+
             ViewState["pic"] = func.IsExist($"SELECT PICTURE FROM USERDETAILS WHERE USERID='{func.UserIdCookie()}'");
             profileImg.Src = ViewState["pic"].ToString();
             lblFullName.InnerText = txtName.Text = func.IsExist($"SELECT FullName FROM Users WHERE USERID='{func.UserIdCookie()}'");

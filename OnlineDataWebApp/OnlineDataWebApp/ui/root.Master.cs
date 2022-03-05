@@ -11,7 +11,7 @@ namespace OnlineDataWebApp.ui
     public partial class root : System.Web.UI.MasterPage
     {
         private function func;
-        private HttpCookie cookie= function.GetCookie(); 
+        private HttpCookie cookie = function.GetCookie();
 
         public root()
         {
@@ -26,6 +26,9 @@ namespace OnlineDataWebApp.ui
                 {
                     Response.Redirect("/ui/log-in.aspx");
                 }
+                lblSup.Text = func.IsExist($@"SELECT COUNT(LIKEID) FROM LikeUser WHERE ReceiverId='{func.UserIdCookie()}' AND RequestStatus=0");
+                lblDate.Text = func.IsExist($@"SELECT COUNT(DateId) FROM DateRequest WHERE ReceiverId='{func.UserIdCookie()}' AND RequestStatus=0");
+
             }
         }
 

@@ -1,5 +1,7 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="root.master.cs" Inherits="OnlineDataWebApp.ui.root" %>
 
+<%@ Import Namespace="ASLdatingWebApp" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -30,17 +32,28 @@
         <header>
             <div class="container">
                 <div class="row">
+
                     <div class="header-logo">
                         <a href="/ui/home.aspx">
-                            <img src="../Resources/images/logo.png" alt="logo" />
+                            <img src="../Resources/images/logo-front.png" alt="logo" />
                         </a>
                     </div>
                     <div class="header-right">
                         <ul class="menu-nav">
                             <li class="active"><a href="/ui/home.aspx">Home</a></li>
+                            <li class="active"><a href="/ui/crushes.aspx">Crush List</a></li>
+                            <li class="active"><a href="/ui/like-request.aspx">Like Request
+                                  <sup style="padding: 5px 8px; background: var(--white); color: var(--color-363636); margin-left: -5px; border-radius: 50%;">
+                                      <asp:Label ID="lblSup" runat="server"></asp:Label>
+                                  </sup></a></li>
+                            <li class="active"><a href="/ui/date-request.aspx">Date Request
+                                  <sup style="padding: 5px 8px; background: var(--white); color: var(--color-363636); margin-left: -5px; border-radius: 50%;">
+                                      <asp:Label ID="lblDate" runat="server"></asp:Label>
+                                  </sup></a></li>
                             <li>
+                                <%function func = function.GetInstance(); %>
                                 <a id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <img src="../Resources/images/user.png" /></a>
+                                    <img src='<%= func.IsExist($"SELECT Picture FROM UserDetails WHERE UserId='{func.UserIdCookie()}'")%>' /></a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item" href="/ui/profile.aspx">Profile</a>
                                     <a class="dropdown-item" runat="server" onserverclick="OnServerClick">Log out</a>
@@ -78,11 +91,11 @@
     </form>
     <!-- bootstrap & js link-->
     <!-- bootstrap & js link-->
-    <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin=" anonymous "></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
     <script src="../Resources/jquery-3.5.0.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj " crossorigin="anonymous "></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="../Resources/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx " crossorigin="anonymous "></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../Resources/bootstrap.bundle.min.js"></script>
     <!-- Custom js -->
     <script src="../Resources/js/style.js"></script>

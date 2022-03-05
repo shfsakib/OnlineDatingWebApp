@@ -1,5 +1,5 @@
 ﻿.root-div {
-  height: calc(100vh);
+  height: calc(100%);
   background: url("/Resources/images/bg.jpg") !important;
   background-size: 100% 100%;
 }
@@ -16,6 +16,7 @@
   padding: 10px;
   text-align: center;
   cursor: pointer;
+    height: 100%;
 }
 
 .radio-gender input[type="radio"] {
@@ -26,8 +27,7 @@
   top: 0;
   cursor: pointer;
   left: 0;
-}
-
+} 
 .radio-gender.active {
   background: var(--deeper-pink);
 }
