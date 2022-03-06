@@ -47,25 +47,33 @@ namespace OnlineDataWebApp.ui
 
         protected void lnkDate_OnClick(object sender, EventArgs e)
         {
+
             LinkButton lnkLike = (LinkButton)sender;
             HiddenField HiddenField1 = (HiddenField)lnkLike.Parent.FindControl("HiddenField1");
-            if (IsDateExist(HiddenField1.Value))
+            string dateId = func.IsExist($"SELECT TOP 1 DateId FROM DateRequest WHERE (ReceiverId='{HiddenField1.Value}' AND SenderId='{func.UserIdCookie()}') OR  (SenderId='{HiddenField1.Value}' AND ReceiverId='{func.UserIdCookie()}') AND Status='Accepted' ORDER BY DateId DESC");
+            if (lnkLike.Text == "Plan your date")
             {
-                func.Alert(this, "Request already sent to your crush. Wait for response", "w", true);
+                Response.Redirect("/ui/dating-plan.aspx?id="+ dateId);
             }
-            else
+            else if (lnkLike.Text == "<i class='fas fa-street-view'></i>&nbsp;&nbsp;Ask for Date")
             {
-                bool ans = SendDateRequest(HiddenField1.Value);
-                if (ans)
+                if (IsDateExist(HiddenField1.Value))
                 {
-                    func.Alert(this, "Date request sent successfully", "s", true);
+                    func.Alert(this, "Request already sent to your crush. Wait for response", "w", true);
                 }
                 else
                 {
-                    func.Alert(this, "Failed to send request", "e", true);
+                    bool ans = SendDateRequest(HiddenField1.Value);
+                    if (ans)
+                    {
+                        func.Alert(this, "Date request sent successfully", "s", true);
+                    }
+                    else
+                    {
+                        func.Alert(this, "Failed to send request", "e", true);
+                    }
                 }
             }
-
         }
         public bool IsDateExist(string id)
         {
@@ -143,8 +151,8 @@ namespace OnlineDataWebApp.ui
                 RepeaterItem row = e.Item;
                 LinkButton lnkDate = (LinkButton)row.FindControl("lnkDate");
                 HiddenField userId = (HiddenField)row.FindControl("HiddenField1");
-                string x =func.IsExist($@"SELECT DateId FROM DateRequest WHERE ((SenderId='{func.UserIdCookie()}' AND ReceiverId='{userId.Value}') OR (SenderId='{userId.Value}' AND ReceiverId='{func.UserIdCookie()}')) AND Status='Accepted'");
-                if (x!="")
+                string x = func.IsExist($@"SELECT DateId FROM DateRequest WHERE ((SenderId='{func.UserIdCookie()}' AND ReceiverId='{userId.Value}') OR (SenderId='{userId.Value}' AND ReceiverId='{func.UserIdCookie()}')) AND Status='Accepted'");
+                if (x != "")
                 {
                     lnkDate.Text = "Plan your date";
                 }

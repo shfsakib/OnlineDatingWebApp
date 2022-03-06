@@ -10,12 +10,12 @@ using ASLdatingWebApp;
 
 namespace OnlineDataWebApp.ui
 {
-    public partial class dating_plan : System.Web.UI.Page
+    public partial class edit_date_plan : System.Web.UI.Page
     {
         private function func;
         private SqlConnection con;
         private SqlCommand cmd;
-        public dating_plan()
+        public edit_date_plan()
         {
             func = function.GetInstance();
             con = new SqlConnection(func.Connection);
@@ -32,19 +32,14 @@ namespace OnlineDataWebApp.ui
                 LoadData();
             }
         }
-
         private void LoadData()
         {
-           func.LoadGrid(gridDatePlan,$"SELECT * FROM DatePlan ORDER BY PlanId DESC");
+            string id = Request.QueryString["id"];
+            txtDate.Text = func.IsExist($"SELECT Date FROM DatePlan WHERE PlanId='{id}'");
+            txtTime.Text = func.IsExist($"SELECT Time FROM DatePlan WHERE PlanId='{id}'");
+            txtDescription.Text = func.IsExist($"SELECT Description FROM DatePlan WHERE PlanId='{id}'");
         }
-        protected void gridDatePlan_OnPageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-            gridDatePlan.PageIndex = e.NewPageIndex;
-            LoadData();
-        }
-
-
-        protected void lnkPlan_OnClick(object sender, EventArgs e)
+        protected void lnkUpdatePlan_OnClick(object sender, EventArgs e)
         {
             if (txtDate.Text == "")
             {
@@ -60,19 +55,19 @@ namespace OnlineDataWebApp.ui
             }
             else
             {
-                bool ans = PlanForDate();
+                bool ans = UpdatePlan();
                 if (ans)
                 {
-                    func.Alert(this, "Plan added successfully", "s", true);
-                    LoadData();
+                    func.Alert(this, "Plan changed successfully", "s", true);
+                    func.Redirect(this, "/ui/dating-plan.aspx?id=" + Request.QueryString["id"]);
                 }
                 else
                 {
-                    func.Alert(this, "Failed to add plan", "e", true);
+                    func.Alert(this, "Failed to change plan", "e", true);
                 }
             }
         }
-        internal bool PlanForDate()
+        internal bool UpdatePlan()
         {
             bool result = false;
             SqlTransaction transaction = null;
@@ -81,13 +76,12 @@ namespace OnlineDataWebApp.ui
                 if (con.State != ConnectionState.Open)
                     con.Open();
                 transaction = con.BeginTransaction();
-                cmd = new SqlCommand("PlanForDate", con);
+                cmd = new SqlCommand("UpdatePlan", con);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@DateId", Request.QueryString["id"]);
+                cmd.Parameters.AddWithValue("@PlanId", Request.QueryString["id"]);
                 cmd.Parameters.AddWithValue("@Date", txtDate.Text);
                 cmd.Parameters.AddWithValue("@Time", txtTime.Text);
                 cmd.Parameters.AddWithValue("@Description", txtDescription.Text);
-                cmd.Parameters.AddWithValue("@InTime", func.Date());
                 cmd.Transaction = transaction;
                 cmd.ExecuteNonQuery();
                 transaction.Commit();

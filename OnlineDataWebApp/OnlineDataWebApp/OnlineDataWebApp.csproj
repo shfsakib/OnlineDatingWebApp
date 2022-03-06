@@ -117,6 +117,7 @@
     <Content Include="ui\crushes.aspx" />
     <Content Include="ui\date-request.aspx" />
     <Content Include="ui\dating-plan.aspx" />
+    <Content Include="ui\edit-date-plan.aspx" />
     <Content Include="ui\home.aspx" />
     <Content Include="ui\like-request.aspx" />
     <Content Include="ui\log-in.aspx" />
@@ -157,6 +158,13 @@
     </Compile>
     <Compile Include="ui\dating-plan.aspx.designer.cs">
       <DependentUpon>dating-plan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ui\edit-date-plan.aspx.cs">
+      <DependentUpon>edit-date-plan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ui\edit-date-plan.aspx.designer.cs">
+      <DependentUpon>edit-date-plan.aspx</DependentUpon>
     </Compile>
     <Compile Include="ui\home.aspx.cs">
       <DependentUpon>home.aspx</DependentUpon>

@@ -169,7 +169,25 @@
                                 <div class="col-12">
                                     <hr>
                                 </div>
-
+                                <% if (IsDateExist())
+                                    {
+                                %>
+                                <div class="col-12">
+                                    <h5 class="font-bold">Email</h5>
+                                    <asp:Label ID="lblEmail" runat="server" CssClass="font-20"
+                                        Text="name@example.com"></asp:Label>
+                                </div>
+                                <div class="col-12 mt-2">
+                                    <h5 class="font-bold">Contact No.</h5>
+                                    <asp:Label ID="lblContact" runat="server" CssClass="font-20"
+                                        Text="XXX XXX XXXX"></asp:Label>
+                                </div>
+                                <div class="col-12 mt-2">
+                                    <h5 class="font-bold">Address</h5>
+                                    <asp:Label ID="lblAddress" runat="server" CssClass="font-20" Text="XXXXXXXXXX">
+                                    </asp:Label>
+                                </div>
+                                <% } %>
                                 <div class="col-12 mt-2">
                                     <h5 class="font-bold">City</h5>
                                     <asp:Label ID="lblCity" runat="server" CssClass="font-20"

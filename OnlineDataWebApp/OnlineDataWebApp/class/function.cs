@@ -267,7 +267,7 @@ namespace ASLdatingWebApp
         }
         public void Redirect(Page page, string link)
         {
-            ScriptManager.RegisterStartupScript(page, page.GetType(), "script", "setTimeout(function(){location.replace('" + link + "')},100);", true);
+            ScriptManager.RegisterStartupScript(page, page.GetType(), "script", "setTimeout(function(){location.replace('" + link + "')},1000);", true);
         }
         public void JqueryCommand(Page page, string command)
         {

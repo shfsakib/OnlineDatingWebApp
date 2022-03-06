@@ -58,15 +58,31 @@ namespace OnlineDataWebApp.ui
             lblCity.Text = func.IsExist($"SELECT City FROM USERDETAILS WHERE USERID='{id}'");
             lblState.Text = func.IsExist($"SELECT State FROM USERDETAILS WHERE USERID='{id}'");
 
-            if (Request.QueryString["type"]!=null)
+            if (Request.QueryString["type"] != null)
             {
                 lblReqSent.Text = func.IsExist($"SELECT COUNT(DateId) FROM DateRequest WHERE ReceiverId='{id}'");
                 lblReqDenied.Text = func.IsExist($"SELECT COUNT(DateId) FROM DateRequest WHERE ReceiverId='{id}' AND Status='DENIED'");
                 lblReqIgnored.Text = func.IsExist($"SELECT COUNT(DateId) FROM DateRequest WHERE ReceiverId='{id}' AND Status='IGNORED'");
 
             }
+            if (IsDateExist())
+            {
+                lblEmail.Text = func.IsExist($"SELECT Email FROM Users WHERE USERID='{func.UserIdCookie()}'");
+                lblContact.Text = func.IsExist($"SELECT Contact FROM USERDETAILS WHERE USERID='{func.UserIdCookie()}'");
+                lblAddress.Text = func.IsExist($"SELECT Address FROM USERDETAILS WHERE USERID='{func.UserIdCookie()}'");
+
+            }
         }
-        
-       
+        public bool IsDateExist()
+        {
+            bool ans = false;
+            string x = func.IsExist($"SELECT DateId FROM DateRequest WHERE (ReceiverId='{Request.QueryString["id"]}' AND SenderId='{func.UserIdCookie()}') OR (SenderId='{Request.QueryString["id"]}' AND ReceiverId='{func.UserIdCookie()}') AND Status='Accepted'");
+            if (x != "")
+            {
+                ans = true;
+            }
+            return ans;
+        }
+
     }
 }

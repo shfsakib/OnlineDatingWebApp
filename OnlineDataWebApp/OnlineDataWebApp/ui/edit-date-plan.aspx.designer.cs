@@ -10,7 +10,7 @@
 namespace OnlineDataWebApp.ui {
     
     
-    public partial class dating_plan {
+    public partial class edit_date_plan {
         
         /// <summary>
         /// UpdatePanel1 control.
@@ -49,21 +49,12 @@ namespace OnlineDataWebApp.ui {
         protected global::System.Web.UI.WebControls.TextBox txtDescription;
         
         /// <summary>
-        /// lnkPlan control.
+        /// lnkUpdatePlan control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkPlan;
-        
-        /// <summary>
-        /// gridDatePlan control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridDatePlan;
+        protected global::System.Web.UI.WebControls.LinkButton lnkUpdatePlan;
     }
 }
